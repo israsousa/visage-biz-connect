@@ -1,18 +1,22 @@
 
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Calendar, BarChart3, ShoppingBag, Users, Plus } from 'lucide-react';
+import { Calendar, BarChart3, ShoppingBag, Users, Plus, Smartphone, Computer } from 'lucide-react';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const BottomNavigation = () => {
   const location = useLocation();
+  const isMobile = useIsMobile();
 
-  const navItems = [
-    { path: '/', icon: BarChart3, label: 'Dashboard' },
+  const getNavItems = () => [
+    { path: '/', icon: isMobile ? Smartphone : Computer, label: 'Dashboard' },
     { path: '/appointments', icon: Calendar, label: 'Appointments' },
     { path: '/book', icon: Plus, label: 'Book', isAction: true },
     { path: '/shop', icon: ShoppingBag, label: 'Shop' },
     { path: '/suppliers', icon: Users, label: 'Suppliers' },
   ];
+
+  const navItems = getNavItems();
 
   return (
     <nav className="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-lg border-t border-purple-100 z-50">

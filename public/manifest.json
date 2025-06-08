@@ -1,43 +1,47 @@
-
 {
-  "name": "BeautyBiz - Beauty Business Management",
-  "short_name": "BeautyBiz",
-  "description": "Complete business management solution for hairdressers and estheticians",
+  "name": "Minha App",
+  "short_name": "App",
+  "description": "Aplicativo de Agendamento",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#8B5CF6",
-  "orientation": "portrait-primary",
-  "scope": "/",
+  "theme_color": "#000000",
+  "orientation": "portrait",
+  "categories": ["business", "productivity"],
   "icons": [
     {
-      "src": "/placeholder.svg",
-      "sizes": "192x192",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
+      "src": "/icons/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png"
     },
     {
-      "src": "/placeholder.svg",
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
       "sizes": "512x512",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
+      "type": "image/png"
     }
   ],
-  "categories": ["business", "productivity"],
   "shortcuts": [
     {
-      "name": "Dashboard",
-      "short_name": "Dashboard",
-      "description": "View business analytics",
-      "url": "/",
-      "icons": [{ "src": "/placeholder.svg", "sizes": "96x96" }]
-    },
+      "name": "Novo Agendamento",
+      "short_name": "Agendar",
+      "description": "Criar um novo agendamento",
+      "url": "/novo-agendamento",
+      "icons": [{ "src": "/icons/icon-192x192.png", "sizes": "192x192" }]
+    }
+  ],
+  "screenshots": [
     {
-      "name": "Appointments",
-      "short_name": "Appointments",
-      "description": "Manage appointments",
-      "url": "/appointments",
-      "icons": [{ "src": "/placeholder.svg", "sizes": "96x96" }]
+      "src": "/screenshots/home.png",
+      "sizes": "800x600",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Tela inicial do app"
     }
   ]
 }

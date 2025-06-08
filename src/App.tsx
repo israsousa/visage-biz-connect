@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -15,6 +14,7 @@ import Wishlist from "./pages/Wishlist";
 import Subscriptions from "./pages/Subscriptions";
 import NotFound from "./pages/NotFound";
 import LinkTree from "./pages/LinkTree";
+import { InstallPWA } from './components/InstallPWA'
 
 const queryClient = new QueryClient();
 
@@ -24,6 +24,7 @@ const App = () => (
       <CartProvider>
         <Toaster />
         <Sonner />
+        <InstallPWA />
         <BrowserRouter>
           <div className="min-h-screen bg-background">
             <Routes>

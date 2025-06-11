@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline - Agenda App</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 400px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        .retry-btn {
+            background: linear-gradient(135deg, #8B5CF6, #EC4899);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .retry-btn:hover {
+            transform: translateY(-2px);
+        }
+        .retry-btn:active {
+            transform: translateY(0);
+        }
+        .features {
+            margin-top: 30px;
+            text-align: left;
+        }
+        .feature {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        .feature::before {
+            content: '✓';
+            margin-right: 10px;
+            color: #4ade80;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="icon">📱</div>
+        <h1>Você está offline</h1>
+        <p>Não se preocupe! O Agenda App funciona offline e seus dados estão salvos localmente.</p>
+        <button class="retry-btn" onclick="window.location.reload()">
+            Tentar Novamente
+        </button>
+        <div class="features">
+            <div class="feature">Ver agendamentos salvos</div>
+            <div class="feature">Criar novos agendamentos</div>
+            <div class="feature">Sincronização automática</div>
+        </div>
+    </div>
+    <script>
+        // Tentar reconectar automaticamente
+        window.addEventListener('online', () => {
+            window.location.reload();
+        });
+        // Mostrar status da conexão
+        if (navigator.onLine) {
+            setTimeout(() => {
+                window.location.reload();
+            }, 2000);
+        }
+    </script>
+</body>
+</html> 

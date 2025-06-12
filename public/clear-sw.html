@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Limpando Service Workers</title>
+</head>
+<body>
+    <h1>Limpando Service Workers...</h1>
+    <div id="status">A processar...</div>
+    
+    <script>
+        async function clearEverything() {
+            const status = document.getElementById('status');
+            
+            try {
+                // 1. Unregister all service workers
+                if ('serviceWorker' in navigator) {
+                    const registrations = await navigator.serviceWorker.getRegistrations();
+                    for (let registration of registrations) {
+                        await registration.unregister();
+                        console.log('SW unregistered:', registration.scope);
+                    }
+                    status.innerHTML += '<br>✅ Service Workers removidos';
+                }
+                
+                // 2. Clear all caches
+                if ('caches' in window) {
+                    const cacheNames = await caches.keys();
+                    for (let cacheName of cacheNames) {
+                        await caches.delete(cacheName);
+                        console.log('Cache deleted:', cacheName);
+                    }
+                    status.innerHTML += '<br>✅ Caches limpos';
+                }
+                
+                // 3. Clear localStorage
+                localStorage.clear();
+                status.innerHTML += '<br>✅ LocalStorage limpo';
+                
+                // 4. Clear sessionStorage
+                sessionStorage.clear();
+                status.innerHTML += '<br>✅ SessionStorage limpo';
+                
+                status.innerHTML += '<br><br>🎉 Tudo limpo! Redirecionando...';
+                
+                setTimeout(() => {
+                    window.location.href = '/';
+                }, 2000);
+                
+            } catch (error) {
+                status.innerHTML += '<br>❌ Erro: ' + error.message;
+                console.error('Error clearing:', error);
+            }
+        }
+        
+        clearEverything();
+    </script>
+</body>
+</html>

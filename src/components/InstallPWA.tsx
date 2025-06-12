@@ -2,11 +2,17 @@ import { useEffect, useRef, useState } from 'react';
 import { Button } from './ui/button';
 
 export function InstallPWA() {
+  // Não mostrar nada em development
+  if (import.meta.env.DEV) {
+    return null;
+  }
+
   const [showBanner, setShowBanner] = useState(false);
   const deferredPrompt = useRef<Event & { prompt: () => Promise<void>; userChoice: Promise<{ outcome: string }> } | null>(null);
   const [isInstalling, setIsInstalling] = useState(false);
 
   useEffect(() => {
+
     // Handler para o evento beforeinstallprompt
     const handleBeforeInstallPrompt = (e: Event) => {
       e.preventDefault();

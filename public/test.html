@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Page</title>
+</head>
+<body>
+    <h1>Servidor está a funcionar!</h1>
+    <p>Se consegues ver esta página, o problema foi resolvido.</p>
+    <a href="/">Ir para a App Principal</a>
+    
+    <script>
+        // Clear everything on this test page
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.getRegistrations().then(registrations => {
+                registrations.forEach(reg => reg.unregister());
+            });
+        }
+        if ('caches' in window) {
+            caches.keys().then(names => {
+                names.forEach(name => caches.delete(name));
+            });
+        }
+    </script>
+</body>
+</html>

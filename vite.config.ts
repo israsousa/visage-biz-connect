@@ -3,20 +3,19 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
 import { VitePWA } from 'vite-plugin-pwa'
-import { splitVendorChunkPlugin } from 'vite'
 import compression from 'vite-plugin-compression'
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
-    port: 8080,
+    port: 8082,
   },
   plugins: [
     react(),
     mode === 'development' &&
     componentTagger(),
-    VitePWA({
+    mode !== 'development' && VitePWA({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'masked-icon.svg'],
       manifest: {
@@ -38,7 +37,6 @@ export default defineConfig(({ mode }) => ({
         ]
       }
     }),
-    splitVendorChunkPlugin(),
     compression({
       algorithm: 'gzip',
       ext: '.gz',
